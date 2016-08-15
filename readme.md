@@ -30,4 +30,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-Although CupidMe was written from scratch, you may find several similar projects on GitHub. If CupidMe suits you best, feel free to use or contribute.
+Although CupidMe was written independently, you may find several similar projects on GitHub. If CupidMe suits you best, feel free to use or contribute.
