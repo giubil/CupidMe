@@ -4,7 +4,7 @@ CupidMe (teehee) is a Python package allowing for easy interaction with OKCupid.
 
 ### Prerequisities
 
-CupidMe was written with Python 3.5 and uses the <a href="https://github.com/jmcarp/robobrowser">RoboBrowser</a> library.
+CupidMe was written with Python 3.5 (compatible >= 3.3) and uses the <a href="https://github.com/jmcarp/robobrowser">RoboBrowser</a> library.
 
 ### Example Usage
 
