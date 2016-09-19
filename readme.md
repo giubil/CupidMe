@@ -1,14 +1,14 @@
 # CupidMe
 
-CupidMe (teehee) is a Python package allowing for simple, easy interaction with OKCupid.com. CupidMe is currently capable of searches, custom filters, outbound communication, and more.
+CupidMe (teehee) is a Python package allowing for easy interaction with OKCupid.com. CupidMe is currently capable of searches, custom filters, and outbound communication. For complete documentation, see <a href="https://github.com/TSS88/CupidMe/wiki/CupidMe")>the wiki</a>.
 
 ### Prerequisities
 
-CupidMe was written with Python 3.5 and uses the [RoboBrowser]("https://github.com/jmcarp/robobrowser") package.
+CupidMe was written with Python 3.5 (compatible >= 3.3) and uses the <a href="https://github.com/jmcarp/robobrowser">RoboBrowser</a> library.
 
 ### Example Usage
 
-CupidMe makes it easy to automate finding matches and letting them know you're interested.
+CupidMe makes it easy to automate finding matches and let them know you're interested.
 
 ```Python
 from cupidme import CupidMe
@@ -30,4 +30,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-Although CupidMe was written from scratch, you may find several similar projects on GitHub. If CupidMe suits you best, feel free to use or contribute.
+Although CupidMe was written independently, you may find several similar projects on GitHub. If CupidMe suits you best, feel free to use or contribute.
