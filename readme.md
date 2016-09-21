@@ -10,7 +10,11 @@ CupidMe was written with Python 3.5 (compatible >= 3.3) and uses the <a href="ht
 
 ### Example Usage
 
-CupidMe makes it easy to automate finding matches and let them know you're interested. Either load the GUI (CupidInterface.py) or, for even more power, access CupidMe through the console:
+CupidMe makes it easy to automate finding matches and let them know you're interested. Either load the GUI (CupidInterface.py):
+
+![Alt text](/Windows/CupidMe.png?raw=true)
+
+For even more control, access CupidMe through the console:
 
 ```Python
 from cupidme import CupidMe
