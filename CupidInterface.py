@@ -1,12 +1,12 @@
-from PyQt5.QtWidgets import *
-from cupidme.CupidMe import CupidMe
+from PyQt5 import QtWidgets
+from cupidme import CupidMe
 from PyQt5 import QtCore, QtGui
 import sys
 import warnings
 
 warnings.filterwarnings("error")
 
-class Cupid_GUI(QWidget):
+class Cupid_GUI(QtWidgets.QWidget):
     
     TAGS = sorted(("who", "where", "minimum_height", "maximum_height", "last_login", "order_by", "minimum_age", "maximum_age", 
             "age_recip", "radius", "availability", "monogamy",
@@ -29,29 +29,29 @@ Finally, help will redisplay this text. For more detailed information, visit htt
 
     def __init__(self, parent = None):
         super(Cupid_GUI, self).__init__(parent)
-        self.cm = CupidMe()
+        self.cm = CupidMe.CupidMe()
 
-        cupid_layout = QGridLayout()
+        cupid_layout = QtWidgets.QGridLayout()
         cupid_layout.setSpacing(15)
         
-        self.user_line = QLineEdit()
-        self.pass_line = QLineEdit()
-        self.pass_line.setEchoMode(QLineEdit.Password)
-        login_button = QPushButton("Log in")
-        cupid_layout.addWidget(QLabel("Username:"), 0, 0, 1, 1)
+        self.user_line = QtWidgets.QLineEdit()
+        self.pass_line = QtWidgets.QLineEdit()
+        self.pass_line.setEchoMode(QtWidgets.QLineEdit.Password)
+        login_button = QtWidgets.QPushButton("Log in")
+        cupid_layout.addWidget(QtWidgets.QLabel("Username:"), 0, 0, 1, 1)
         cupid_layout.addWidget(self.user_line, 0, 1, 1, 1)
-        cupid_layout.addWidget(QLabel("Password:"), 0, 2, 1, 1)
+        cupid_layout.addWidget(QtWidgets.QLabel("Password:"), 0, 2, 1, 1)
         cupid_layout.addWidget(self.pass_line, 0, 3, 1, 3)
         cupid_layout.addWidget(login_button, 0, 6, 1, 1)
         cupid_layout.addWidget(self.line_separator(), 1, 0, 1, 7)
         login_button.clicked.connect(self.submit_login)
         
-        self.filter_combo = QComboBox()
+        self.filter_combo = QtWidgets.QComboBox()
         self.filter_combo.addItem(None)
         self.filter_combo.addItems(self.TAGS)
-        self.option_container = QGridLayout()
-        set_button = QPushButton("Set")
-        cupid_layout.addWidget(QLabel("Filters"), 2, 0, 1, 1, alignment = QtCore.Qt.AlignTop)
+        self.option_container = QtWidgets.QGridLayout()
+        set_button = QtWidgets.QPushButton("Set")
+        cupid_layout.addWidget(QtWidgets.QLabel("Filters"), 2, 0, 1, 1, alignment = QtCore.Qt.AlignTop)
         cupid_layout.addWidget(self.filter_combo, 2, 1, 1, 1, alignment = QtCore.Qt.AlignTop)
         cupid_layout.addLayout(self.option_container, 2, 3, 1, 3)
         cupid_layout.addWidget(set_button, 2, 6, 1, 1, alignment = QtCore.Qt.AlignTop)
@@ -59,36 +59,36 @@ Finally, help will redisplay this text. For more detailed information, visit htt
         self.filter_combo.currentIndexChanged.connect(self.combo_check)
         set_button.clicked.connect(self.submit_filter)
         
-        self.list_users_cb = QCheckBox("List users?")
+        self.list_users_cb = QtWidgets.QCheckBox("List users?")
         self.list_users_cb.setChecked(True)
-        search_button = QPushButton("Search")
+        search_button = QtWidgets.QPushButton("Search")
         cupid_layout.addWidget(self.list_users_cb, 4, 4, 1, 1)
         cupid_layout.addWidget(search_button, 4, 6, 1, 1)
         cupid_layout.addWidget(self.line_separator(), 5, 0, 1, 7)
         search_button.clicked.connect(self.submit_search)
         
-        self.msg_line = QTextEdit()
+        self.msg_line = QtWidgets.QTextEdit()
         self.msg_line.setMaximumHeight(50)
-        self.like_cb = QCheckBox("Like?")
-        flood_button = QPushButton("Flood")
-        cupid_layout.addWidget(QLabel("Message:"), 6, 0, 1, 1)
+        self.like_cb = QtWidgets.QCheckBox("Like?")
+        flood_button = QtWidgets.QPushButton("Flood")
+        cupid_layout.addWidget(QtWidgets.QLabel("Message:"), 6, 0, 1, 1)
         cupid_layout.addWidget(self.msg_line, 6, 1, 1, 1)
         cupid_layout.addWidget(self.like_cb, 6, 4, 1, 1)
         cupid_layout.addWidget(flood_button, 6, 6, 1, 1)
         cupid_layout.addWidget(self.line_separator(), 7, 0, 1, 7)
         flood_button.clicked.connect(self.submit_flood)
         
-        top_button = QPushButton("Top Cities")
-        help_button = QPushButton("Help")
+        top_button = QtWidgets.QPushButton("Top Cities")
+        help_button = QtWidgets.QPushButton("Help")
         cupid_layout.addWidget(top_button, 8, 5, 1, 1)
         cupid_layout.addWidget(help_button, 8, 6, 1, 1)
         help_button.clicked.connect(self.submit_help)
         top_button.clicked.connect(self.submit_top)
         
-        self.log = QTextEdit()
+        self.log = QtWidgets.QTextEdit()
         self.log.setText(self.DIRECTIONS)
         self.log.setReadOnly(True)
-        #self.log.setLineWrapMode(QTextEdit.NoWrap)
+        #self.log.setLineWrapMode(QtWidgets.QTextEdit.NoWrap)
         self.log.setFont(QtGui.QFont("Courier",12))
         cupid_layout.addWidget(self.log, 9, 0, 5, 7)
 
@@ -96,9 +96,9 @@ Finally, help will redisplay this text. For more detailed information, visit htt
         self.setWindowTitle("CupidMe")
     
     def line_separator(self):
-        line = QFrame()
-        line.setFrameShape(QFrame.HLine)
-        line.setFrameShadow(QFrame.Sunken)
+        line = QtWidgets.QFrame()
+        line.setFrameShape(QtWidgets.QFrame.HLine)
+        line.setFrameShadow(QtWidgets.QFrame.Sunken)
         return line
 
     def submit_login(self):
@@ -121,15 +121,15 @@ Finally, help will redisplay this text. For more detailed information, visit htt
                 
         filter_field = self.filter_combo.currentText()      
         if filter_field in ("minimum_height", "maximum_height", "minimum_age", "maximum_age", "radius"):
-            num_field = QLineEdit()
+            num_field = QtWidgets.QLineEdit()
             num_field.setText(str(self.cm.filter.current_filter[filter_field]))
             self.option_container.addWidget(num_field, 0, 0, 1, 1)
         elif filter_field == "match_cutoff":
-            num_field = QLineEdit()
+            num_field = QtWidgets.QLineEdit()
             num_field.setText(str(self.cm.filter.match_cutoff))
             self.option_container.addWidget(num_field, 0, 0, 1, 1)
         elif filter_field == "where":
-            num_field = QLineEdit()
+            num_field = QtWidgets.QLineEdit()
             num_field.setText(str(self.cm.filter.current_filter["location"]))
             self.option_container.addWidget(num_field, 0, 0, 1, 1)
         elif filter_field == "who":
@@ -149,7 +149,7 @@ Finally, help will redisplay this text. For more detailed information, visit htt
             
             #Add widgets two per row
             for index, option in enumerate(options):
-                checkbox = QCheckBox(option)
+                checkbox = QtWidgets.QCheckBox(option)
                 self.option_container.addWidget(checkbox, row, index % 2, 1, 1, alignment = QtCore.Qt.AlignTop)
                 
                 #If this box is set in filters, check it
@@ -162,9 +162,9 @@ Finally, help will redisplay this text. For more detailed information, visit htt
         else:
             options = sorted((i for i in options))
             row = 0
-            radio_group = QButtonGroup()
+            radio_group = QtWidgets.QButtonGroup()
             for index, option in enumerate(options):
-                radio = QRadioButton(option)
+                radio = QtWidgets.QRadioButton(option)
                 radio_group.addButton(radio)
                 self.option_container.addWidget(radio, row, index % 2, 1, 1, alignment = QtCore.Qt.AlignTop)
                 if filter_field in self.cm.filter.current_filter and radio.text() == self.cm.filter.current_filter[filter_field]:
@@ -179,15 +179,15 @@ Finally, help will redisplay this text. For more detailed information, visit htt
         try:
             if filter_field in ("minimum_age", "maximum_age", "minimum_height", "maximum_height", "radius", "match_cutoff"):
                 self.cm.filter.set(**{filter_field: int(self.option_container.itemAtPosition(0, 0).widget().text())})
-            elif type(self.option_container.itemAt(0).widget()) is QLineEdit:
+            elif type(self.option_container.itemAt(0).widget()) is QtWidgets.QLineEdit:
                 self.cm.filter.set(**{filter_field: self.option_container.itemAtPosition(0, 0).widget().text()})
-            elif type(self.option_container.itemAt(0).widget()) is QRadioButton:
+            elif type(self.option_container.itemAt(0).widget()) is QtWidgets.QRadioButton:
                 items = (self.option_container.itemAt(i) for i in range(self.option_container.count())) 
                 for radio in items:
                     if radio.widget().isChecked() is True:
                         self.cm.filter.set(**{filter_field: radio.widget().text()})
                         break
-            elif type(self.option_container.itemAt(0).widget()) is QCheckBox:
+            elif type(self.option_container.itemAt(0).widget()) is QtWidgets.QtWidgets.QCheckBox:
                 items = (self.option_container.itemAt(i) for i in range(self.option_container.count())) 
                 for check in items:
                     if check.widget().isChecked() is True:
@@ -213,11 +213,11 @@ Finally, help will redisplay this text. For more detailed information, visit htt
         self.log.setText("Flooding...\n")
         QtCore.QCoreApplication.processEvents()
         try:
-            msgl = self.msg_line.text()
+            msgl = self.msg_line.toPlainText()
             if msgl == "":
                 self.cm.flood(like = self.like_cb.isChecked())
             else:
-                self.cm.flood(msg = msgl, like = self.like_cb.isChecked())
+                self.cm.flood(message = msgl, like = self.like_cb.isChecked())
             self.log.append("Flooded " + str(self.cm.total_users) + " users")
         except:
             self.log.append("Flood failed.")
@@ -250,7 +250,7 @@ Finally, help will redisplay this text. For more detailed information, visit htt
         self.log.setText(self.DIRECTIONS)
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     screen = Cupid_GUI()
     screen.show()
     sys.exit(app.exec_())
